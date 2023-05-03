@@ -6,10 +6,13 @@ on:
       init-repo:
         description: "Do you want to create repository"
         required: true
+      repo-name: 
+        description: "Name of the repository"
+        required: true
 
 env:
   TF_VAR_gh_token: ${{ secrets.CUSTOM_TOKEN }}
-
+  TF_VAR_my_app_name: ${{ github.event.inputs.repo-name }}
 
 defaults:
   run:

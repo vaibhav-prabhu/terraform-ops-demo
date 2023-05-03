@@ -1,7 +1,13 @@
 resource "github_repository" "terraform_created_repo" {
-    name = "terraform_created_repo-action"
+    name = var.my_app_name
     description = "This is description"
     auto_init = true
+
+    template {
+      owner                = "vaibhav-prabhu"
+      repository           = "Magento2template"
+      include_all_branches = true
+    }
 
 }
 
