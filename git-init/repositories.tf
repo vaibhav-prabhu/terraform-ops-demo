@@ -6,7 +6,6 @@ resource "github_repository" "terraform_created_repo" {
     template {
       owner                = "vaibhav-prabhu"
       repository           = "Magento2template"
-      include_all_branches = true
     }
 
 }
