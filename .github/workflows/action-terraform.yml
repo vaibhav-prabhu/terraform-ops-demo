@@ -3,16 +3,17 @@ name: Run terraform demo
 on:
   workflow_dispatch:
     inputs:
-      init-repo:
-        description: "Do you want to create repository"
-        required: true
       repo-name: 
         description: "Name of the repository"
+        required: true
+      repo-description:
+        description: "Description of repository"
         required: true
 
 env:
   TF_VAR_gh_token: ${{ secrets.CUSTOM_TOKEN }}
-  TF_VAR_my_app_name: ${{ github.event.inputs.repo-name }}
+  TF_VAR_app_name: ${{ github.event.inputs.repo-name }}
+  TF_VAR_app_description: ${{ github.event.inputs.repo-description }}
 
 defaults:
   run:
