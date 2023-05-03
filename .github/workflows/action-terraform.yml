@@ -8,7 +8,7 @@ on:
         required: true
 
 env:
-  TF_VAR_gh_tokens: ${{ secrets.CUSTOM_TOKEN }}
+  TF_VAR_gh_token: ${{ secrets.CUSTOM_TOKEN }}
 
 
 defaults:
