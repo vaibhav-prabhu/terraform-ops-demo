@@ -1,0 +1,44 @@
+name: Run terraform demo
+
+on:
+  workflow_dispatch:
+    inputs:
+      init-repo:
+        description: "Do you want to create repository"
+        required: true
+
+env:
+  TF_VAR_gh_tokens: ${{ secrets.CUSTOM_TOKEN }}
+
+
+defaults:
+  run:
+    working_directory: git_init
+
+jobs:
+  Terraform_script:
+    runs-on: ubuntu-latest
+    name: Run Terraform
+
+    steps:
+      - name: checkout files
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+      
+      - name: Terraform init
+        id: init
+        run: terraform init
+      
+      - name: Terraform validate
+        id: validate
+        run: terraform validate -no-color
+      
+      - name: Terraform plan
+        id: plan
+        run: terraform plan -no-color
+      
+      - name: Terraform apply
+        id: apply
+        run: terraform apply -auto-approve
